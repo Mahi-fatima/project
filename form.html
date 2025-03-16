@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Sign Up - Amazon Clone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f1f1f1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        h2 {
+            font-size: 26px;
+            color: #131921;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        label {
+            font-size: 14px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            padding: 15px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        input[type="email"]:focus {
+            border-color: #f90; /* Amazon orange */
+        }
+
+        button {
+            padding: 15px;
+            background-color: #f90; /* Amazon orange */
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e77b00; /* Darker Amazon orange */
+        }
+
+        p {
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+        }
+
+        a {
+            color: #0073bb; /* Amazon blue */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hide signup form by default */
+        #signupForm {
+            display: none;
+        }
+
+        /* Hidden checkbox to toggle forms */
+        #toggleForm {
+            display: none;
+        }
+
+        /* When checkbox is checked, show signup form */
+        #toggleForm:checked + #loginForm {
+            display: none;
+        }
+
+        #toggleForm:checked + #loginForm + #signupForm {
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Hidden Checkbox to Toggle Between Forms -->
+    <input type="checkbox" id="toggleForm">
+
+    <!-- Form Container for Login -->
+    <div class="form-container" id="loginForm">
+        <h2>Sign In</h2>
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <label for="username">Email or Mobile Phone Number</label>
+                <input type="text" id="username" name="username" placeholder="Enter your email or phone" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit">Sign In</button>
+        </form>
+        <p>New to Amazon? <label for="toggleForm" style="cursor: pointer; color: #0073bb;">Create an account</label></p>
+    </div>
+
+    <!-- Form Container for Signup -->
+    <div class="form-container" id="signupForm">
+        <h2>Create Account</h2>
+        <form action="/signup" method="POST">
+            <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="new-password">Password</label>
+                <input type="password" id="new-password" name="new-password" placeholder="Create a password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+            </div>
+            <button type="submit">Create Account</button>
+        </form>
+        <p>Already have an account? <label for="toggleForm" style="cursor: pointer; color: #0073bb;">Sign In</label></p>
+    </div>
+
+</body>
+</html>
